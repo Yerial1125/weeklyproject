@@ -8,13 +8,17 @@ import matplotlib.pyplot as plt
 import platform
 
 # 한글 폰트 지정
-import matplotlib.font_manager as fm
+from matplotlib import font_manager, rc
+plt.rcParams['axes.unicode_minus'] = False
 
-fe = fm.FontEntry(
-    fname='your custom ttf file path',
-    name='')
-fm.fontManager.ttflist.insert(0, fe) # or append is fine
-mpl.rcParams['font.family'] = fe.name # = 'your custom ttf font name'
+if platform.system() == 'Darwin':  # 맥OS
+    rc('font', family='AppleGothic')
+elif platform.system() == 'Windows':  # 윈도우
+    path = "c:/Windows/Fonts/malgun.ttf"
+    font_name = font_manager.FontProperties(fname=path).get_name()
+    rc('font', family=font_name)
+else:
+    print('Unknown system...  sorry~~~')
 
 
 

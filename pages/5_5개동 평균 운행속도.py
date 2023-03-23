@@ -74,7 +74,7 @@ with col1 :
     plt.figure(figsize=(22, 12))
     sns.heatmap(data*60, vmax=data.max().max()*60, vmin=data.min().min()*60, cmap='Reds', annot=annot, annot_kws={'size': 25},
                 fmt='.0f')
-    plt.title(f'서울시 전체 : {button2} 현장 출동 평균시속', fontsize=30)
+    plt.title(f'서울시 전체 : {button2} 현장 출동 평균시속', fontsize=40)
     plt.xlabel('시간대', fontsize=30)
     plt.xticks(fontsize=30)
     plt.yticks(fontsize=30, rotation=0)
@@ -82,14 +82,18 @@ with col1 :
     st.pyplot(plt)
 
 with col2 :
+    if button2 == '단거리(4km이하)':
+        data2 = sec1_pv
+    else :
+        data2 = sec2_pv
     if num :
         annot = True
     else:
         annot = False
     plt.figure(figsize=(22, 12))
-    sns.heatmap(sec1_pv.loc[f'{button1}'].agg(weeks)*60, cmap='Reds', annot=annot, fmt='.0f', annot_kws={'size': 25}, vmin=0.34*60,
-                    vmax=0.48*60)
-    plt.title(f'{button1} : {button2} 현장 출동 평균시속', fontsize=30)
+    sns.heatmap(data2.loc[f'{button1}'].agg(weeks)*60, cmap='Reds', annot=annot, fmt='.0f', annot_kws={'size': 25}, vmin=data.min().min()*60,
+                    vmax=data.max().max()*60)
+    plt.title(f'{button1} : {button2} 현장 출동 평균시속', fontsize=40)
     plt.xlabel('시간대', fontsize=30)
     plt.xticks(fontsize=30)
     plt.yticks(fontsize=30, rotation=0)

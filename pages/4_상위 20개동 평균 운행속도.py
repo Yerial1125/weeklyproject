@@ -51,10 +51,10 @@ if num :
 else:
     annot = False
 if button == '시간대별' :
-    plt.title('신고빈도 상위 20개동의 시간대별 평균 운행속도')
     dong_hour = time_df_new.pivot_table(index='읍면동명', columns='출동시', values='거리(km)/시간(분)', aggfunc='mean')*60
     plt.figure(figsize=(20, 10))
     sns.heatmap(dong_hour, vmax=dong_hour.max().max(), vmin=dong_hour.min().min(), cmap='Reds', annot=annot, annot_kws={'size': 20}, fmt='.0f')
+    plt.title('신고빈도 상위 20개동의 시간대별 평균 운행속도', fontsize=25)
     plt.xlabel('출동시간대', fontsize=15)
     plt.ylabel('신고 빈도 상위 20개 동', fontsize=15)
     plt.xticks(fontsize=20)
@@ -62,9 +62,9 @@ if button == '시간대별' :
     st.pyplot(plt)
 elif button == '요일별' :
     dong_day = time_df_new.pivot_table(index='요일', columns='읍면동명', values='거리(km)/시간(분)', aggfunc='mean').agg(weeks).T*60
-    plt.title('신고빈도 상위 20개동의 요일별 평균 운행속도')
     plt.figure(figsize=(20, 10))
     sns.heatmap(dong_day, vmax=dong_day.max().max(), vmin=dong_day.min().min(), cmap='Reds', annot=annot, annot_kws={'size': 20}, fmt='.0f')
+    plt.title('신고빈도 상위 20개동의 요일별 평균 운행속도', fontsize=25)
     plt.xlabel('출동요일', fontsize=15)
     plt.ylabel('신고 빈도 상위 20개 동', fontsize=15)
     plt.xticks(fontsize=20)
@@ -72,9 +72,9 @@ elif button == '요일별' :
     st.pyplot(plt)
 elif button == '월별' :
     dong_month = time_df_new.pivot_table(index=['읍면동명'], columns='출동월', values='거리(km)/시간(분)', aggfunc='mean')*60
-    plt.title('신고빈도 상위 20개동의 월별 평균 운행속도')
     plt.figure(figsize=(20, 10))
     sns.heatmap(dong_month, vmax=dong_month.max().max(), vmin=dong_month.min().min(), cmap='Reds', annot=annot, annot_kws={'size': 20}, fmt='.0f')
+    plt.title('신고빈도 상위 20개동의 월별 평균 운행속도', fontsize=25)
     plt.xlabel('출동월', fontsize=15)
     plt.ylabel('신고 빈도 상위 20개 동', fontsize=15)
     plt.xticks(fontsize=20)
@@ -82,10 +82,10 @@ elif button == '월별' :
     st.pyplot(plt)
 else :
     dong_season = time_df_new.pivot_table(index=['계절구분명'], columns='읍면동명', values='거리(km)/시간(분)', aggfunc='mean').agg(season).T*60
-    plt.title('신고빈도 상위 20개동의 계절별 평균 운행속도')
     plt.figure(figsize=(20, 10))
     sns.heatmap(dong_season, vmax=dong_season.max().max(), vmin=dong_season.min().min(), cmap='Reds', annot=annot, annot_kws={'size': 20},
             fmt='.0f')
+    plt.title('신고빈도 상위 20개동의 계절별 평균 운행속도', fontsize=25)
     plt.xlabel('출동계절', fontsize=15)
     plt.ylabel('신고 빈도 상위 20개 동', fontsize=15)
     plt.xticks(fontsize=20)

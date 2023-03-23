@@ -63,7 +63,13 @@ folium.Choropleth(geo_data = geo_seoul,
                   fill_color = 'YlGn', fill_opacity=0.7,
                   line_opacity=0.3,
                   key_on='feature.properties.EMD_NM',).add_to(m)
+# 동별 마커클러스터
+mc = MarkerCluster().add_to(m)
 
+for i in range(len(dong_marker)) :
+    folium.Marker(location=(dong_marker.iloc[i,5], dong_marker.iloc[i,6]),
+                  popup=folium.Popup(dong_marker.iloc[i,3], max_width=200),
+                 tooltip=dong_marker.iloc[i,3]).add_to(mc)
 with col2 :
     st_folium(m,width=750)
 st.markdown('---')

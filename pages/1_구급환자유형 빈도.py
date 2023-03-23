@@ -20,10 +20,6 @@ elif platform.system() == 'Windows':  # 윈도우
 else:
     print('Unknown system...  sorry~~~')
 
-
-font_family = "malgun"
-plt.rcParams["font.family"] = font_family
-
 # 서울 전체 신고자 유형
 df_sex = pd.read_csv('./data/df_sex.csv')
 df_age = pd.read_csv('./data/df_age.csv', encoding='euc-kr')
@@ -59,13 +55,7 @@ axs[1,1].set_title('<신고 계절 비율>')
 axs[1,1].pie(df_season['계절 합계'], labels=df_season.계절구분명, startangle=90,
             radius=1, autopct='%.1f%%', colors=colors, wedgeprops=wedgeprops)
 
-plt.rc('font', size=8) # controls default text sizes
-plt.rc('axes', titlesize=8) # fontsize of the axes title
-plt.rc('axes', labelsize=8) # fontsize of the x and y labels
-plt.rc('xtick', labelsize=8) # fontsize of the tick labels
-plt.rc('ytick', labelsize=8) # fontsize of the tick labels
-plt.rc('legend', fontsize=8) # legend fontsize
-plt.rc('figure', titlesize=8)
+
 plt.tight_layout()
 st.pyplot(plt)
 st.markdown('---')

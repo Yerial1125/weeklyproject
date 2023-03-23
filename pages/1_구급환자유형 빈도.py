@@ -6,8 +6,7 @@ import platform
 import matplotlib.font_manager as fm
 import seaborn as sns
 
-font_family = "malgun"
-plt.rcParams["font.family"] = font_family
+
 
 # 한글 폰트 지정
 '''
@@ -29,6 +28,8 @@ st.set_page_config(
     page_icon = ':ambulance:',
     layout='wide')
 
+font_family = "malgun"
+plt.rcParams["font.family"] = font_family
 
 # 서울 전체 신고자 유형
 df_sex = pd.read_csv('./data/df_sex.csv')

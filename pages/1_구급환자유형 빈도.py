@@ -3,13 +3,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import platform
-import matplotlib.font_manager as fm
 import seaborn as sns
 
 
 
 # 한글 폰트 지정
-'''
 from matplotlib import font_manager, rc
 plt.rcParams['axes.unicode_minus'] = False
 
@@ -21,12 +19,7 @@ elif platform.system() == 'Windows':  # 윈도우
     rc('font', family=font_name)
 else:
     print('Unknown system...  sorry~~~')
-'''
 
-st.set_page_config(
-    page_title = '구급출동 데이터 분석',
-    page_icon = ':ambulance:',
-    layout='wide')
 
 font_family = "malgun"
 plt.rcParams["font.family"] = font_family
